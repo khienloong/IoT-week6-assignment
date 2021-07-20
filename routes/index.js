@@ -25,11 +25,11 @@ router.post('/', (req, res, next) =>{
   });
 
   sql = 'SELECT * FROM page';
-  conn.query(sql, (err, result)=>{
+  conn.query(sql, (err, result, fields)=>{
     if(err) throw err;
-    console.log(result);
-    var postTitle = result[result.length - 1].title;
-    var postBody = result[result.length - 1].body;
+    console.log(fields);
+    var postTitle = fields[fields.length - 1].title;
+    var postBody = fields[fields.length - 1].body;
   });
   
   res.render('index', { title: postTitle, body: postBody});
