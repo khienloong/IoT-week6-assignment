@@ -6,10 +6,10 @@ var logger = require('morgan');
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-  host      : process.env.RDS_HOSTNAME,
-  user      : process.env.RDS_USERNAME,
-  password  : process.env.RDS_PASSWORD,
-  port      : process.env.RDS_PORT
+  host      : 'logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com',
+  user      : 'logo2',
+  password  : 'logologo',
+  port      : '3306'
 });
 
 connection.connect((err) =>{
