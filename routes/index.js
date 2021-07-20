@@ -12,7 +12,7 @@ router.post('/', (req, res, next) =>{
     host      : 'logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com',
     user      : 'logo2',
     password  : 'logologo',
-    port      : '3306'
+    database  : 'mydb'
   });
 
   conn.connect((err)=>{
