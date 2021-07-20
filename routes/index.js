@@ -24,7 +24,7 @@ router.post('/', (req, res, next) =>{
     });
   });
 
-  sql = 'SELECT * FROM page WHERE';
+  sql = 'SELECT * FROM page';
   conn.query(sql, (err, result)=>{
     if(err) throw err;
     console.log(result);
