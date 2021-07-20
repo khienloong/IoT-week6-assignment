@@ -27,6 +27,7 @@ router.post('/', (req, res, next) =>{
   sql = 'SELECT * FROM page WHERE id = ( SELECT MAX(id) FROM page )';
   conn.query(sql, (err, result)=>{
     if(err) throw err;
+    console.log(result);
     var postTitle = result.title;
     var postBody = result.body;
   });
