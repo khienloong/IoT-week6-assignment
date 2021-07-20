@@ -2,4 +2,13 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p #{body}
+
+  form(action='/', method='POST')
+    p
+      | Title: 
+      input(type='text', name='title', value='')
+      |          Body: 
+      input(type='text', name='year', value='')
+
+    input(type='submit', value='Submit')
