@@ -3,6 +3,25 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+  host      : process.env.RDS_HOSTNAME,
+  user      : process.env.RDS_USERNAME,
+  password  : process.env.RDS_PASSWORD,
+  port      : process.env.RDS_PORT
+});
+
+connection.connect((err) =>{
+  if(err)
+  {
+    console.error('Database connection failed: ' + err.stack);
+    return;
+  }
+
+  console.log('Connected to database.');
+});
+connection.end();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -37,5 +56,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
 
 module.exports = app;
