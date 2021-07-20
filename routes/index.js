@@ -24,12 +24,12 @@ router.post('/', (req, res, next) =>{
     });
   });
 
-  sql = 'SELECT * FROM page WHERE id = ( SELECT MAX(id) FROM page )';
+  sql = 'SELECT * FROM page WHERE';
   conn.query(sql, (err, result)=>{
     if(err) throw err;
     console.log(result);
-    var postTitle = result.title;
-    var postBody = result.body;
+    var postTitle = result[result.length - 1].title;
+    var postBody = result[result.length - 1].body;
   });
   
   res.render('index', { title: postTitle, body: postBody});
