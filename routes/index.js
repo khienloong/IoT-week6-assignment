@@ -30,7 +30,7 @@ router.post('/', (req, res, next) =>{
   conn.query(sql, (err, result)=>{
     if(err) throw err;
     console.log(result);
-    var rows = JSON.parse(JSON.stringify(results[results.length - 1]));
+    var rows = JSON.parse(JSON.stringify(result[result.length - 1]));
     postTitle = rows['title'];
     postBody = rows['body'];
   });
