@@ -30,8 +30,8 @@ router.post('/', (req, res, next) =>{
   conn.query(sql, (err, result)=>{
     if(err) throw err;
     console.log(result);
-    postTitle = result['title'];
-    postBody = result['body'];
+    postTitle = result[0]['title'];
+    postBody = result[0]['body'];
   });
   
   res.render('index', { title: postTitle, body: postBody});
