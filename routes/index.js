@@ -17,7 +17,7 @@ router.post('/', (req, res, next) =>{
 
   conn.connect((err)=>{
     if(err) throw err;
-    var sql = 'INSERT INTO page(title, body) VALUES('+req.body.title+','+req.body.body+')';
+    var sql = 'INSERT INTO page(title, body) VALUES("'+req.body.title+'","'+req.body.body+'")';
     conn.query(sql, (err, result)=>{
       if(err) throw err;
       console.log("1 record inserted");
