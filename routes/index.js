@@ -18,7 +18,7 @@ router.get("/", function (req, res, next) {
     conn.query(sql, (err, result) => {
       if (err) throw err;
       console.log(result);
-      if(result)
+      if(result != null)
       {
         rows = JSON.parse(JSON.stringify(result[result.length - 1]));
         console.log(rows);
