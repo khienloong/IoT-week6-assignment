@@ -41,7 +41,7 @@ router.get("/:id", function (req, res, next) {
   if (!isNaN(id) && Number.isInteger(id)) {
     conn.connect((err) => {
       if (err) throw err;
-      sql = "SELECT * FROM page WHERE id = " + id;
+      sql = "SELECT * FROM page WHERE id = '" + id + "'";
       var rows;
       conn.query(sql, (err, result) => {
         if (err) throw err;
@@ -90,7 +90,7 @@ router.get("/delete/:id", (req, res, next) => {
   if (!isNaN(id) && Number.isInteger(id)) {
     conn.connect((err) => {
       if (err) throw err;
-      sql = "DELETE FROM page WHERE id =" + id;
+      sql = "DELETE FROM page WHERE id ='" + id +"'";
       var rows;
       conn.query(sql, (err, result) => {
         if (err) res.send("\r\n There is no record with that value\r\n");
