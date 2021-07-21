@@ -18,12 +18,18 @@ router.get("/", function (req, res, next) {
     conn.query(sql, (err, result) => {
       if (err) throw err;
       console.log(result);
-      rows = JSON.parse(JSON.stringify(result[result.length - 1]));
-      console.log(rows);
-      console.log(rows["title"]);
-      /* postTitle = rows['title'];
-    postBody = rows['body']; */
-      res.render("index", { title: rows["title"], body: rows["body"] });
+      if(result)
+      {
+        rows = JSON.parse(JSON.stringify(result[result.length - 1]));
+        console.log(rows);
+        console.log(rows["title"]);
+        /* postTitle = rows['title'];
+      postBody = rows['body']; */
+        res.render("index", { title: rows["title"], body: rows["body"] });
+      }
+      else
+        res.render("index", { title: "No Records in Db", body: "" });
+      
     });
     //res.render("index", { title: "default title", body: "default body" });
   });
