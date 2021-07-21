@@ -31,6 +31,7 @@ router.post('/', (req, res, next) =>{
     console.log(result);
     rows = JSON.parse(JSON.stringify(result[result.length - 1]));
     console.log(rows);
+    console.log(rows['title']);
     /* postTitle = rows['title'];
     postBody = rows['body']; */
   });
@@ -38,7 +39,7 @@ router.post('/', (req, res, next) =>{
   
   
   
-  res.render('index', { title: rows.title, body: rows.body});
+  res.render('index', { title: rows['title'], body: rows['body']});
 });
 
 module.exports = router;
