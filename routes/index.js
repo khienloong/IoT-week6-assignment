@@ -31,14 +31,15 @@ router.post('/', (req, res, next) =>{
     if(err) throw err;
     console.log(result);
     var rows = JSON.parse(JSON.stringify(result[result.length - 1]));
-    postTitle = rows['title'];
-    postBody = rows['body'];
+    console.log(rows);
+    /* postTitle = rows['title'];
+    postBody = rows['body']; */
   });
 
   
-  console.log("b: " + postTitle.title);
   
-  res.render('index', { title: postTitle, body: postBody});
+  
+  res.render('index', { title: rows.title, body: rows.body});
 });
 
 module.exports = router;
