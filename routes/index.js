@@ -33,7 +33,7 @@ router.get("/", function (req, res, next) {
 router.get("/delete", (req, res, next) => {
   conn.connect((err) => {
     if (err) throw err;
-    var sql = "DELETE * FROM page";
+    var sql = "DELETE FROM page";
     conn.query(sql, (err, result) => {
       if (err) throw err;
       console.log("All records deleted");
