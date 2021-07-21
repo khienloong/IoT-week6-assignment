@@ -25,12 +25,11 @@ router.post('/', (req, res, next) =>{
   });
 
   sql = 'SELECT * FROM page';
-  var postTitle;
-  var postBody;
+  var rows;
   conn.query(sql, (err, result)=>{
     if(err) throw err;
     console.log(result);
-    var rows = JSON.parse(JSON.stringify(result[result.length - 1]));
+    rows = JSON.parse(JSON.stringify(result[result.length - 1]));
     console.log(rows);
     /* postTitle = rows['title'];
     postBody = rows['body']; */
