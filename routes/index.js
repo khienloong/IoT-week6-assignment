@@ -34,6 +34,9 @@ router.post('/', (req, res, next) =>{
     postTitle = rows['title'];
     postBody = rows['body'];
   });
+
+  console.log("a: " + postTitle);
+  console.log("b: " + postTitle.title);
   
   res.render('index', { title: postTitle, body: postBody});
 });
