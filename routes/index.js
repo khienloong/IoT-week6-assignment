@@ -34,12 +34,13 @@ router.post('/', (req, res, next) =>{
     console.log(rows['title']);
     /* postTitle = rows['title'];
     postBody = rows['body']; */
+    res.render('index', { title: rows['title'], body: rows['body']});
   });
 
   
   
   
-  res.render('index', { title: rows['title'], body: rows['body']});
+  
 });
 
 module.exports = router;
