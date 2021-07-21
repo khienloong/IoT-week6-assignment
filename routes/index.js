@@ -25,7 +25,7 @@ router.get("/", function (req, res, next) {
     postBody = rows['body']; */
     res.render("index", {
       title: rows["title"] ? rows["title"] : "Default Title",
-      body: rows["body"] ? rows["body"] : "Default Body",
+      body: rows["body"] ? rows["body"] : "Default Body"
     });
   });
 });
