@@ -35,10 +35,11 @@ router.get("/:id", function (req, res, next) {
   });
 
   var id = req.params.id;
+  id = parseInt(id);
 
-  console.log("id: " + id);
+  
 
-/*   if (!isNaN(id) && Number.isInteger(id)) { */
+
     conn.connect((err) => {
       if (err) throw err;
       sql = "SELECT * FROM page WHERE id = '" + id + "'";
@@ -51,11 +52,11 @@ router.get("/:id", function (req, res, next) {
 
           /* postTitle = rows['title'];
         postBody = rows['body']; */
-          res.send("\r\n" + id + ": " + rows["title"] + " " + rows["body"]);
+          res.send("\r\n" + id + ": " + rows["title"] + " " + rows["body"] + "\r\n");
         } else res.send("\r\n There's currently no data :(\r\n");
       });
     });
- /*  } */
+
 });
 
 router.get("/delete-all", (req, res, next) => {
