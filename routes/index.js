@@ -38,7 +38,7 @@ router.get("/:id", function (req, res, next) {
 
   console.log("id: " + id);
 
-  if (!isNaN(id) && Number.isInteger(id)) {
+/*   if (!isNaN(id) && Number.isInteger(id)) { */
     conn.connect((err) => {
       if (err) throw err;
       sql = "SELECT * FROM page WHERE id = '" + id + "'";
@@ -55,7 +55,7 @@ router.get("/:id", function (req, res, next) {
         } else res.send("\r\n There's currently no data :(\r\n");
       });
     });
-  }
+ /*  } */
 });
 
 router.get("/delete-all", (req, res, next) => {
