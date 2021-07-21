@@ -19,15 +19,11 @@ router.get("/", function (req, res, next) {
       console.log(result);
       if (result != "") {
         rows = JSON.parse(JSON.stringify(result[result.length - 1]));
-        
-        res.send( 
-          rows.map(row =>
-            `${row['id']}: ${row['title']} ${row['body']}\r\n`
-            )
 
+        res.send(
+          rows.map((row) => `${row["id"]}: ${row["title"]} ${row["body"]}\r\n`)
         );
-      } else
-        res.send("There are no records in DB :( \r\n");
+      } else res.send("There are no records in DB :( \r\n");
     });
   });
 });
@@ -49,15 +45,14 @@ router.get("/:id", function (req, res, next) {
       var rows;
       conn.query(sql, (err, result) => {
         if (err) throw err;
-      
+
         if (result != "") {
           rows = JSON.parse(JSON.stringify(result[result.length - 1]));
-          
+
           /* postTitle = rows['title'];
         postBody = rows['body']; */
-          res.send(id + ": " + rows["title"] + " " + rows["body"] );
-        } else
-          res.send("There's currently no data :(\r\n");
+          res.send(id + ": " + rows["title"] + " " + rows["body"]);
+        } else res.send("There's currently no data :(\r\n");
       });
     });
   }
@@ -114,7 +109,7 @@ router.post("/", (req, res, next) => {
   });
 
   conn.connect((err) => {
-    if (err) throw err;
+    if (err) throw err + "\r\n awwww crap";
     var sql =
       'INSERT INTO page(title, body) VALUES("' +
       req.body.title +
@@ -126,14 +121,18 @@ router.post("/", (req, res, next) => {
       console.log("1 record inserted");
     });
 
-    sql = "SELECT * FROM page WEHERE title = " + req.body.title + " AND body = " + req.body.body;
+    sql =
+      "SELECT * FROM page WEHERE title = " +
+      req.body.title +
+      " AND body = " +
+      req.body.body;
     var rows;
     conn.query(sql, (err, result) => {
       if (err) throw err;
-     
+
       rows = JSON.parse(JSON.stringify(result[result.length - 1]));
-    
-      res.send("Success! Record inserted for id: " + rows['id'] + "\r\n");
+
+      res.send("Success! Record inserted for id: " + rows["id"] + "\r\n");
     });
   });
 });
