@@ -16,11 +16,11 @@ router.get("/", function (req, res, next) {
     var rows;
     conn.query(sql, (err, result) => {
       if (err) throw err;
-      console.log(result);
+ 
       if (result != "") {
         rows = JSON.parse(JSON.stringify(result[result.length - 1]));
 
-        res.send("\r\nThe latest entry in the DB is:\r\n" +rows["id"] + ": " + rows["title"] + " " + row["body"]+"\r\n");
+        res.send("\r\nThe latest entry in the DB is:\r\n" +rows["id"] + ": " + rows["title"] + " " + rows["body"]+"\r\n");
       } else res.send("\r\nThere are no records in DB :( \r\n");
     });
   });
