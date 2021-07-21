@@ -8,66 +8,60 @@ var conn = mysql.createConnection({
   password: "logologo",
   database: "mydb",
 });
+conn.connect((err) => {
+  if (err) throw err;
+});
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  conn.connect((err) => {
+  sql = "SELECT * FROM page";
+  var rows;
+  conn.query(sql, (err, result) => {
     if (err) throw err;
-    sql = "SELECT * FROM page";
-    var rows;
-    conn.query(sql, (err, result) => {
-      if (err) throw err;
-      console.log(result);
-      rows = JSON.parse(JSON.stringify(result[result.length - 1]));
-      console.log(rows);
-      console.log(rows["title"]);
-      /* postTitle = rows['title'];
+    console.log(result);
+    rows = JSON.parse(JSON.stringify(result[result.length - 1]));
+    console.log(rows);
+    console.log(rows["title"]);
+    /* postTitle = rows['title'];
     postBody = rows['body']; */
-      res.render("index", {
-        title: rows["title"] ? rows["title"] : "Default Title",
-        body: rows["body"] ? rows["body"] : "Default Body",
-      });
+    res.render("index", {
+      title: rows["title"] ? rows["title"] : "Default Title",
+      body: rows["body"] ? rows["body"] : "Default Body",
     });
   });
 });
 
 router.get("/delete", (req, res, next) => {
-  conn.connect((err) => {
+  var sql = "DELETE FROM page";
+  conn.query(sql, (err, result) => {
     if (err) throw err;
-    var sql = "DELETE FROM page";
-    conn.query(sql, (err, result) => {
-      if (err) throw err;
-      console.log("All records deleted");
-      res.render("index", { title: "default title", body: "default body" });
-    });
+    console.log("All records deleted");
+    res.render("index", { title: "default title", body: "default body" });
   });
 });
 
 router.post("/", (req, res, next) => {
-  conn.connect((err) => {
+  var sql =
+    'INSERT INTO page(title, body) VALUES("' +
+    req.body.title +
+    '","' +
+    req.body.body +
+    '")';
+  conn.query(sql, (err, result) => {
     if (err) throw err;
-    var sql =
-      'INSERT INTO page(title, body) VALUES("' +
-      req.body.title +
-      '","' +
-      req.body.body +
-      '")';
-    conn.query(sql, (err, result) => {
-      if (err) throw err;
-      console.log("1 record inserted");
-    });
+    console.log("1 record inserted");
+  });
 
-    sql = "SELECT * FROM page";
-    var rows;
-    conn.query(sql, (err, result) => {
-      if (err) throw err;
-      console.log(result);
-      rows = JSON.parse(JSON.stringify(result[result.length - 1]));
-      console.log(rows);
-      console.log(rows["title"]);
-      /* postTitle = rows['title'];
+  sql = "SELECT * FROM page";
+  var rows;
+  conn.query(sql, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    rows = JSON.parse(JSON.stringify(result[result.length - 1]));
+    console.log(rows);
+    console.log(rows["title"]);
+    /* postTitle = rows['title'];
     postBody = rows['body']; */
-      res.render("index", { title: rows["title"], body: rows["body"] });
-    });
+    res.render("index", { title: rows["title"], body: rows["body"] });
   });
 });
 
