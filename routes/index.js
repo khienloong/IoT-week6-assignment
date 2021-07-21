@@ -122,10 +122,10 @@ router.post("/", (req, res, next) => {
     });
 
     sql =
-      "SELECT * FROM page WEHERE title = " +
+      "SELECT * FROM page WEHERE title = '" +
       req.body.title +
-      " AND body = " +
-      req.body.body;
+      "' AND body = '" +
+      req.body.body + "'";
     var rows;
     conn.query(sql, (err, result) => {
       if (err) throw err;
