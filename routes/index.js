@@ -30,6 +30,25 @@ router.get("/", function (req, res, next) {
   });
 });
 
+router.get("/delete", (req, res, next) => {
+  var conn = mysql.createConnection({
+    host: "logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com",
+    user: "logo2",
+    password: "logologo",
+    database: "mydb",
+  });
+
+  conn.connect((err) => {
+    if (err) throw err;
+    sql = "DELETE FROM page";
+    var rows;
+    conn.query(sql, (err, result) => {
+      if (err) throw err;
+      res.render("index", { title: "Records deleted", body: "" });
+    })
+  });
+})
+
 router.post("/", (req, res, next) => {
   var conn = mysql.createConnection({
     host: "logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com",
