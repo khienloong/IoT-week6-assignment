@@ -34,7 +34,7 @@ router.get("/:id", function (req, res, next) {
     database: "mydb",
   });
 
-  var id = req.body.id;
+  var id = req.params.id;
 
   console.log("id: " + id);
 
@@ -85,7 +85,7 @@ router.get("/delete/:id", (req, res, next) => {
     database: "mydb",
   });
 
-  var id = req.body.id;
+  var id = req.params.id;
 
   if (!isNaN(id) && Number.isInteger(id)) {
     conn.connect((err) => {
