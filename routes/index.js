@@ -10,7 +10,6 @@ var conn = mysql.createConnection({
 });
 /* GET home page. */
 router.get("/", function (req, res, next) {
-
   conn.connect((err) => {
     if (err) throw err;
     sql = "SELECT * FROM page";
@@ -23,28 +22,27 @@ router.get("/", function (req, res, next) {
       console.log(rows["title"]);
       /* postTitle = rows['title'];
     postBody = rows['body']; */
-      res.render("index", { title: rows["title"] ? rows['title'] : "Default Title", body: rows["body"] ? rows['body'] : "Default Body" });
+      res.render("index", {
+        title: rows["title"] ? rows["title"] : "Default Title",
+        body: rows["body"] ? rows["body"] : "Default Body",
+      });
     });
-  })
-
-  
+  });
 });
 
-router.get('/delete', (req,res,next)=>{
-  conn.connect((err)=>{
-    if(err) throw err;
+router.get("/delete", (req, res, next) => {
+  conn.connect((err) => {
+    if (err) throw err;
     var sql = "DELETE * FROM page";
     conn.query(sql, (err, result) => {
       if (err) throw err;
       console.log("All records deleted");
       res.render("index", { title: "default title", body: "default body" });
     });
-  })
-})
+  });
+});
 
 router.post("/", (req, res, next) => {
-  
-
   conn.connect((err) => {
     if (err) throw err;
     var sql =
