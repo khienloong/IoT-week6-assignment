@@ -18,15 +18,23 @@ router.get("/", function (req, res, next) {
   conn.query(sql, (err, result) => {
     if (err) throw err;
     console.log(result);
-    rows = JSON.parse(JSON.stringify(result[result.length - 1]));
+    if(rows = JSON.parse(JSON.stringify(result[result.length - 1])))
+    res.render("index", {
+      title: rows["title"],
+      body: rows["body"]
+    });
+    else
+    res.render("index", {
+      title: "No records in Db",
+      body: ""
+    });
+
     console.log(rows);
     console.log(rows["title"]);
     /* postTitle = rows['title'];
     postBody = rows['body']; */
-    res.render("index", {
-      title: rows["title"] ? rows["title"] : "Default Title",
-      body: rows["body"] ? rows["body"] : "Default Body"
-    });
+
+    
   });
 });
 
