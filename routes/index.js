@@ -36,6 +36,8 @@ router.get("/:id", function (req, res, next) {
 
   var id = req.body.id;
 
+  console.log("id: " + id);
+
   if (!isNaN(id) && Number.isInteger(id)) {
     conn.connect((err) => {
       if (err) throw err;
