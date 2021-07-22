@@ -14,7 +14,7 @@ router.get("/delete/:id", (req, res, next) => {
   var id = req.params.id;
   id = parseInt(id);
 
-  if (id == "NaN") res.send("\r\nThe entered id value must be an integer.\r\n");
+  if (isNaN(id)) res.send("\r\nThe entered id value must be an integer.\r\n");
   else {
     conn.connect((err) => {
       if (err) throw err;
@@ -61,7 +61,7 @@ router.get("/:id", function (req, res, next) {
   id = parseInt(id);
   console.log(id);
 
-  if (id == NaN) res.send("\r\nThe entered id value must be an integer.\r\n");
+  if (isNaN(id)) res.send("\r\nThe entered id value must be an integer.\r\n");
   else {
     conn.connect((err) => {
       if (err) throw err;
