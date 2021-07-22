@@ -2,7 +2,26 @@ var express = require("express");
 var router = express.Router();
 var mysql = require("mysql");
 
-/* GET home page. */
+
+router.get("/delete", (req, res, next) => {
+  var conn = mysql.createConnection({
+    host: "logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com",
+    user: "logo2",
+    password: "logologo",
+    database: "mydb",
+  });
+
+  conn.connect((err) => {
+    if (err) throw err;
+    sql = "DELETE FROM page";
+    var rows;
+    conn.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send("\r\n All records have been deleted...\r\n");
+    });
+  });
+});
+
 router.get("/", function (req, res, next) {
   var conn = mysql.createConnection({
     host: "logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com",
@@ -59,24 +78,7 @@ router.get("/:id", function (req, res, next) {
 
 });
 
-router.get("/delete-all", (req, res, next) => {
-  var conn = mysql.createConnection({
-    host: "logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com",
-    user: "logo2",
-    password: "logologo",
-    database: "mydb",
-  });
 
-  conn.connect((err) => {
-    if (err) throw err;
-    sql = "DELETE FROM page";
-    var rows;
-    conn.query(sql, (err, result) => {
-      if (err) throw err;
-      res.send("\r\n All records have been deleted...\r\n");
-    });
-  });
-});
 
 router.get("/delete/:id", (req, res, next) => {
   var conn = mysql.createConnection({
