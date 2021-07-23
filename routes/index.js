@@ -4,14 +4,14 @@ var mysql = require("mysql");
 
 
 router.get("/delete/:id", (req, res, next) => {
-  var conn = mysql.createConnection({
-    host: "logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com",
+   var conn = mysql.createConnection({
+    host: "logo2.c8v6vdi8dcei.us-east-2.rds.amazonaws.com",
     user: "logo2",
     password: "logologo",
-    database: "mydb",
+    database: "myDB",
   });
 
-  var id = req.params.id;
+var id = req.params.id;
   id = parseInt(id);
 
   if (isNaN(id)) res.send("\r\nThe entered id value must be an integer.\r\n");
@@ -31,12 +31,15 @@ router.get("/delete/:id", (req, res, next) => {
 
 
 router.get("/delete", (req, res, next) => {
-  var conn = mysql.createConnection({
-    host: "logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com",
+   var conn = mysql.createConnection({
+    host: "logo2.c8v6vdi8dcei.us-east-2.rds.amazonaws.com",
     user: "logo2",
     password: "logologo",
-    database: "mydb",
+    database: "myDB",
   });
+
+
+
 
   conn.connect((err) => {
     if (err) throw err;
@@ -51,14 +54,13 @@ router.get("/delete", (req, res, next) => {
 
 router.get("/:id", function (req, res, next) {
   var conn = mysql.createConnection({
-    host: "logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com",
+    host: "logo2.c8v6vdi8dcei.us-east-2.rds.amazonaws.com",
     user: "logo2",
     password: "logologo",
-    database: "mydb",
+    database: "myDB",
   });
 
-  var id = req.params.id;
-  id = parseInt(id);
+ id = parseInt(id);
   console.log(id);
 
   if (isNaN(id)) res.send("\r\nThe entered id value must be an integer.\r\n");
@@ -88,13 +90,14 @@ router.get("/:id", function (req, res, next) {
 
 
 router.get("/", function (req, res, next) {
-  var conn = mysql.createConnection({
-    host: "logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com",
+   var conn = mysql.createConnection({
+    host: "logo2.c8v6vdi8dcei.us-east-2.rds.amazonaws.com",
     user: "logo2",
     password: "logologo",
-    database: "mydb",
+    database: "myDB",
   });
-  conn.connect((err) => {
+
+conn.connect((err) => {
     if (err) throw err;
     sql = "SELECT * FROM page";
     var rows;
@@ -120,15 +123,14 @@ router.get("/", function (req, res, next) {
 
 
 router.post("/", (req, res, next) => {
-  var conn = mysql.createConnection({
-    host: "logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com",
+   var conn = mysql.createConnection({
+    host: "logo2.c8v6vdi8dcei.us-east-2.rds.amazonaws.com",
     user: "logo2",
     password: "logologo",
-    database: "mydb",
+    database: "myDB",
   });
 
-  conn.connect((err) => {
-    if (err) throw err + "\r\n awwww crap";
+  if (err) throw err + "\r\n awwww crap";
     var sql =
       'INSERT INTO page(title, body) VALUES("' +
       req.body.title +
