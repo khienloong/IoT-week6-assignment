@@ -6,7 +6,7 @@ var logger = require('morgan');
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-  host      : 'logo2.cym4s4x6gfpj.us-east-2.rds.amazonaws.com',
+  host      : 'logo2.c8v6vdi8dcei.us-east-2.rds.amazonaws.com',
   user      : 'logo2',
   password  : 'logologo',
   port      : '3306'
