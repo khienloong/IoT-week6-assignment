@@ -157,6 +157,6 @@ router.post("/", (req, res, next) => {
       res.send("\r\n Success! Record inserted for id: " + rows["id"] + "\r\n");
     });
   });
-});
+
 
 module.exports = router;
