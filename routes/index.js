@@ -21,7 +21,7 @@ var id = req.params.id;
       sql = "DELETE FROM baji WHERE id ='" + id + "'";
       var rows;
       conn.query(sql, (err, result) => {
-        if (err) res.send("\r\n There is no record with that value\r\n");
+        if (err) res.send("\r\n There is no record with that value !\r\n");
         res.send("\r\n Record " + id + " has been deleted.\r\n");
       });
     });
@@ -47,7 +47,7 @@ router.get("/delete", (req, res, next) => {
     var rows;
     conn.query(sql, (err, result) => {
       if (err) throw err;
-      res.send("\r\n All records have been deleted...\r\n");
+      res.send("\r\n All records have been deleted.\r\n");
     });
   });
 });
@@ -60,11 +60,12 @@ router.get("/:id", function (req, res, next) {
     database: "myDB",
   });
 
-var id = parseInt(id);
-  console.log(id);
+var id = req.params.id;
+id = parseInt(id);
+console.log(id);
 
-  if (isNaN(id)) res.send("\r\nThe entered id value must be an integer.\r\n");
-  else {
+if (isNaN(id)) res.send("\r\nThe entered ID value must be an integer.\r\n");
+else {
     conn.connect((err) => {
       if (err) throw err;
       sql = "SELECT * FROM baji WHERE id = '" + id + "'";
@@ -108,7 +109,7 @@ conn.connect((err) => {
         rows = JSON.parse(JSON.stringify(result[result.length - 1]));
 
         res.send(
-          "\r\nThe latest entry in the DB is:\r\n" +
+          "\r\nThe latest entry in the database is:\r\n" +
             rows["id"] +
             ": " +
             rows["title"] +
@@ -155,7 +156,7 @@ conn.connect((err)=>{
 
       rows = JSON.parse(JSON.stringify(result[result.length - 1]));
 
-      res.send("\r\n Success! Record inserted for id: " + rows["id"] + "\r\n");
+      res.send("\r\n Record inserted for ID: " + rows["id"] + "\r\n");
     });
   });
 });
