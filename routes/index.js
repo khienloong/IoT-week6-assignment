@@ -14,7 +14,7 @@ router.get("/delete/:id", (req, res, next) => {
 var id = req.params.id;
   id = parseInt(id);
 
-  if (isNaN(id)) res.send("\r\nThe entered value must be an integer.\r\n");
+  if (isNaN(id)) res.send("\r\nPlease enter an integer for the ID value.\r\n");
   else {
     conn.connect((err) => {
       if (err) throw err;
@@ -64,7 +64,7 @@ var id = req.params.id;
 id = parseInt(id);
 console.log(id);
 
-if (isNaN(id)) res.send("\r\nThe entered value must be an integer.\r\n");
+if (isNaN(id)) res.send("\r\nPlease enter an integer for the ID value.\r\n");
 else {
     conn.connect((err) => {
       if (err) throw err;
@@ -81,7 +81,7 @@ else {
           res.send(
             "\r\n" + id + ": " + rows["title"] + " " + rows["author"] + "\r\n"
           );
-        } else res.send("\r\n Currently, there are no data--yes, data is a plural word--in our records. \r\n");
+        } else res.send("\r\n Can't find this ID in our database. So sorry ! \r\n");
       });
     });
   }
@@ -117,7 +117,7 @@ conn.connect((err) => {
             rows["author"] +
             "\r\n"
         );
-      } else res.send("\r\nThere are no records in the database.  \r\n");
+      } else res.send("\r\nThere are no data--yes, data is a plural word--in the database.  \r\n");
     });
   });
 });
