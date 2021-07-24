@@ -130,7 +130,8 @@ router.post("/", (req, res, next) => {
     database: "myDB",
   });
 
-  if (err) throw err + "\r\n Nope !";
+conn.connect((err)=>{
+  if (err) throw err + "\r\n Nope!";
     var sql =
       'INSERT INTO page(title, author) VALUES("' +
       req.body.title +
@@ -157,6 +158,6 @@ router.post("/", (req, res, next) => {
       res.send("\r\n Success! Record inserted for id: " + rows["id"] + "\r\n");
     });
   });
-
+});
 
 module.exports = router;
