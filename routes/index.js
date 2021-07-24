@@ -133,7 +133,7 @@ router.post("/", (req, res, next) => {
 conn.connect((err)=>{
   if (err) throw err + "\r\n Nope!";
     var sql =
-      'INSERT INTO page(title, author) VALUES("' +
+      'INSERT INTO baji(title, author) VALUES("' +
       req.body.title +
       '","' +
       req.body.author +
