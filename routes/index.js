@@ -47,7 +47,7 @@ router.get("/delete", (req, res, next) => {
     var rows;
     conn.query(sql, (err, result) => {
       if (err) throw err;
-      res.send("\r\n All records have been deleted.\r\n");
+      res.send("\r\n All your record are belong to us !\r\n");
     });
   });
 });
@@ -64,7 +64,7 @@ var id = req.params.id;
 id = parseInt(id);
 console.log(id);
 
-if (isNaN(id)) res.send("\r\nThe entered ID value must be an integer.\r\n");
+if (isNaN(id)) res.send("\r\nThe entered value must be an integer.\r\n");
 else {
     conn.connect((err) => {
       if (err) throw err;
@@ -81,7 +81,7 @@ else {
           res.send(
             "\r\n" + id + ": " + rows["title"] + " " + rows["author"] + "\r\n"
           );
-        } else res.send("\r\n There's currently no data :(\r\n");
+        } else res.send("\r\n Currently, there are no data--yes, data is a plural word--in our records. \r\n");
       });
     });
   }
@@ -109,7 +109,7 @@ conn.connect((err) => {
         rows = JSON.parse(JSON.stringify(result[result.length - 1]));
 
         res.send(
-          "\r\nThe latest entry in the database is:\r\n" +
+          "\r\nThe latest entry in the database is as follows:\r\n" +
             rows["id"] +
             ": " +
             rows["title"] +
