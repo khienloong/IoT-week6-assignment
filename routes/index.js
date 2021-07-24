@@ -60,7 +60,7 @@ router.get("/:id", function (req, res, next) {
     database: "myDB",
   });
 
- id = parseInt(id);
+var id = parseInt(id);
   console.log(id);
 
   if (isNaN(id)) res.send("\r\nThe entered id value must be an integer.\r\n");
